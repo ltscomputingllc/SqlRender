@@ -363,6 +363,7 @@ redshift,"ISNUMERIC(@s)","REGEXP_INSTR(@s, '^[\-\+]?(\\d*\\.)?\\d+([Ee][\-\+]?\\
 redshift,"PATINDEX(@pattern,@expression)","REGEXP_INSTR(@expression, case when LEFT(@pattern,1)<>'%' and RIGHT(@pattern,1)='%' then '^' else '' end||TRIM('%' FROM REPLACE(@pattern,'_','.'))||case when LEFT(@pattern,1)='%' and RIGHT(@pattern,1)<>'%' then '$' else '' end)"
 redshift,"WITH @cte AS (SELECT @s1 '@literal' @s2)","WITH @cte AS (SELECT @s1 CAST('@literal' as TEXT) @s2)"
 redshift,^,#
+redshift,#,
 redshift,"CONVERT(DATE, @a)","CAST(@a as DATE)"
 redshift,"CONVERT(TIMESTAMPTZ, @a)","CONVERT(TIMESTAMP WITH TIME ZONE, @a)"
 redshift,UPDATE STATISTICS @a;,ANALYZE @a;
